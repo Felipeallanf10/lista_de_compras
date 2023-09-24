@@ -1,35 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css'
 import {Card, CardProps} from './components/card/card'
 
 export default function App() {
 
-  const [itemName, setItemName] = useState('Maca');
-  const [itens, setItens] = useState<CardProps[]>([]);
-
+  const [itemName, setItemName] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [unidade, setUnidade] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [card, setCard] = useState<CardProps[]>([]);
+  // const [cards, setCards] = useState<CardProps>({} as CardProps);
   function handleAddItem(e:any){
     e.preventDefault(); 
     const newCard = {
       item: itemName,
-      quantidade:'2',
-      unidade:'unidades',
-      categoria:'fruta'
+      quantidade: quantity,
+      unidade:unidade,
+      categoria:categoria
     }
     
-    setItens( prevState => [...prevState, newCard]);
-    console.log(newCard)
-  }
+    setCard( prevState => [...prevState, newCard]);
+    console.log(newCard.item)
 
-    useEffect(() => {
-    // Dentro do objeto devemos colocar todas. ações que serão executadas.
-      fetch('http://localhost:5500/api')
-        .then(reponse => reponse.json())
-        .then(data => {
-          console.log(JSON.stringify(data))
-        })
-        .catch(error => console.error(error))
-    // Os arrays definem quais os estados que o useEffect depende.
-  }, []);
+  }
+  // useEffect(() => {
+  // // Dentro do objeto devemos colocar todas. ações que serão executadas.
+  //   fetch('http://localhost:5500/api')
+  //     .then(reponse => reponse.json())
+  //     .then(data => {
+  //       setCard( prevState => [...prevState, newCard]);
+  //       console.log(data);
+  //     })
+  //     .catch(error => console.error(error))
+  // // Os arrays definem quais os estados que o useEffect depende.
+// }, []);
+  
 
   return (
     <div className='box'>
@@ -53,16 +58,18 @@ export default function App() {
              type="number" 
              min={0} 
              required
+             onChange={e => setQuantity(e.target.value)}
              />
              <select
             name="Dropdown" 
             id="Dropdown" 
             required 
+            onChange={e => setUnidade(e.target.value)}
             >
               <optgroup id="quant">
-                  <option value={'UN'} title='Unidades' selected>UN.</option>
-                  <option value={'G'} title='Gramas'>G</option>
-                  <option value={'KG'} title='Quilogramas'>KG</option>
+                  <option value={'unidade'} title='Unidades' selected>UN.</option>
+                  <option value={'gramas'} title='Gramas'>G</option>
+                  <option value={'quilogramas'} title='Quilogramas'>KG</option>
                 </optgroup>
              </select>
           </div>
@@ -74,6 +81,8 @@ export default function App() {
           <select 
           placeholder='Selecione' 
           required
+          onChange={e => setCategoria(e.target.value)}
+          defaultValue={'outra'}
           >
             <option>Selecione</option>
             <optgroup id='categoria'>
@@ -99,7 +108,7 @@ export default function App() {
         </button>
       </form>
       {
-        itens.map( card => (
+        card.map( card => (
           <Card
             item ={card.item}
             quantidade={card.quantidade}
@@ -108,7 +117,8 @@ export default function App() {
           />
           
         ))
-      }
+      } 
+      
     </div>
   )
 }

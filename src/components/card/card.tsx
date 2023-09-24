@@ -23,7 +23,7 @@ export function Card({ item, quantidade , unidade , categoria}: CardProps){
         <Categorias
         categoria={categoria}
         />  
-          <select name="excluir" id="" className='select-box'>
+          <select name="excluir" id="" className='select-box' defaultValue={"excluir"}>
             <option value="excluir">excluir</option>
           </select>
       </div>
