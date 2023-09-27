@@ -20,22 +20,20 @@ export default function App() {
     }
     
     setCard( prevState => [...prevState, newCard]);
-    console.log(newCard.item)
+  //   useEffect(() => {
+  //   // Dentro do objeto devemos colocar todas. ações que serão executadas.
+  //     fetch('http://localhost:5500/api')
+  //       .then(reponse => reponse.json())
+  //       .then(data => {
+  //         setCards(newCard);
+  //         console.log(data);
+  //       })
+  //       .catch(error => console.error(error))
+  //   // Os arrays definem quais os estados que o useEffect depende.
+  // }, []);
 
   }
-  // useEffect(() => {
-  // // Dentro do objeto devemos colocar todas. ações que serão executadas.
-  //   fetch('http://localhost:5500/api')
-  //     .then(reponse => reponse.json())
-  //     .then(data => {
-  //       setCard( prevState => [...prevState, newCard]);
-  //       console.log(data);
-  //     })
-  //     .catch(error => console.error(error))
-  // // Os arrays definem quais os estados que o useEffect depende.
-// }, []);
   
-
   return (
     <div className='box'>
       <h1>Lista de Compras</h1>
@@ -60,6 +58,7 @@ export default function App() {
              required
              onChange={e => setQuantity(e.target.value)}
              />
+
              <select
             name="Dropdown" 
             id="Dropdown" 
@@ -67,7 +66,7 @@ export default function App() {
             onChange={e => setUnidade(e.target.value)}
             >
               <optgroup id="quant">
-                  <option value={'unidade'} title='Unidades' selected>UN.</option>
+                  <option value={'unidade'} title='Unidades'>UN.</option>
                   <option value={'gramas'} title='Gramas'>G</option>
                   <option value={'quilogramas'} title='Quilogramas'>KG</option>
                 </optgroup>
@@ -117,8 +116,7 @@ export default function App() {
           />
           
         ))
-      } 
-      
+      }       
     </div>
   )
 }

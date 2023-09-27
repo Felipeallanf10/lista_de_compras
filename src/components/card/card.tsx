@@ -1,3 +1,4 @@
+import { useState } from "react";
 import './style.css'
 import Categorias from '../tagsCategorias/categorias'
 
@@ -8,12 +9,28 @@ export type CardProps = {
   categoria: string
 }
 
+
 export function Card({ item, quantidade , unidade , categoria}: CardProps){
+
+  const[isChecked, setIsChecked] = useState(false);
+  const cartao = document.querySelector('.card');
+  
+  function finish(){
+    setIsChecked(!isChecked);
+    
+    if (!isChecked == true){
+      cartao?.classList.add('finish')
+    }else if (!isChecked == false){
+      cartao?.classList.remove('finish')
+    }
+    
+  }
 
   return (
     <label className='card'>
       <div className='container'>
-          <input type="checkbox" name="" id=""/>
+          <input type="checkbox" id="check" checked={isChecked}
+          onChange={finish}/>
           <div>
             <h3>{item}</h3>
             <p> {quantidade} {unidade} </p>
