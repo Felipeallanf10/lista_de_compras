@@ -48,63 +48,65 @@ export default function App() {
           />
         </div>
 
-        <div id="DropdownUnit">
-          <label>Quantidade</label>
+        <div className="line">
+          <div id="DropdownUnit">
+            <label>Quantidade</label>
 
-          <div id='i'>
-             <input 
-             type="number" 
-             min={0} 
-             required
-             onChange={e => setQuantity(e.target.value)}
-             />
+            <div id='i'>
+              <input 
+              type="number" 
+              min={0} 
+              required
+              onChange={e => setQuantity(e.target.value)}
+              />
 
-             <select
-            name="Dropdown" 
-            id="Dropdown" 
-            required 
-            onChange={e => setUnidade(e.target.value)}
-            >
-              <optgroup id="quant">
-                  <option value={'unidade'} title='Unidades'>UN.</option>
-                  <option value={'gramas'} title='Gramas'>G</option>
-                  <option value={'quilogramas'} title='Quilogramas'>KG</option>
-                </optgroup>
-             </select>
+              <select
+              name="Dropdown" 
+              id="Dropdown" 
+              required 
+              onChange={e => setUnidade(e.target.value)}
+              >
+                <optgroup id="quant">
+                    <option value={'unidade'} title='Unidades'>UN.</option>
+                    <option value={'gramas'} title='Gramas'>G</option>
+                    <option value={'quilogramas'} title='Quilogramas'>KG</option>
+                  </optgroup>
+              </select>
+            </div>
+
           </div>
 
-        </div>
+          <div id="DropdownCategory">
+            <label>Categoria</label>
+            <select 
+            placeholder='Selecione' 
+            required
+            onChange={e => setCategoria(e.target.value)}
+            defaultValue={'outra'}
+            >
+              <option>Selecione</option>
+              <optgroup id='categoria'>
+                  <option value={"fruta"}>Fruta</option>
+                  <option value={"padaria"}>Padaria</option>
+                  <option value={"legume"}>Legume</option>
+                  <option value={"carne"}>Carne</option>
+                  <option value={"bebida"}>Bebida</option>
+                  <option value={"outra"}>Outra</option>
+              </optgroup>
+            </select>
+            
+          </div>
 
-        <div id="DropdownCategory">
-          <label>Categoria</label>
-          <select 
-          placeholder='Selecione' 
-          required
-          onChange={e => setCategoria(e.target.value)}
-          defaultValue={'outra'}
+          <button 
+          type="submit" 
+          onClick={handleAddItem}
           >
-            <option>Selecione</option>
-            <optgroup id='categoria'>
-                <option value={"fruta"}>Fruta</option>
-                <option value={"padaria"}>Padaria</option>
-                <option value={"legume"}>Legume</option>
-                <option value={"carne"}>Carne</option>
-                <option value={"bebida"}>Bebida</option>
-                <option value={"outra"}>Outra</option>
-            </optgroup>
-          </select>
-          
-        </div>
-
-        <button 
-        type="submit" 
-        onClick={handleAddItem}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path  d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="#FBF9FE"/>
-                <path d="M12 4C12.5523 4 13 4.44772 13 5V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V5C11 4.44772 11.4477 4 12 4Z" fill="#FBF9FE"/>
-          </svg>
-        </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path  d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="#FBF9FE"/>
+                  <path d="M12 4C12.5523 4 13 4.44772 13 5V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V5C11 4.44772 11.4477 4 12 4Z" fill="#FBF9FE"/>
+            </svg>
+          </button>
+          </div>
       </form>
       {
         card.map( card => (

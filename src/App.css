@@ -7,10 +7,11 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: var(--base-gray-600, #0C0C0D) url(./assets/image-top-fruits.png) top center no-repeat;
+    background: linear-gradient(180deg, rgba(9, 9, 9, 0.20) 0%, rgba(9, 9, 9, 0.85) 100%), url(./assets/image-top-fruits.png), lightgray 50% / cover no-repeat;
     background-size: 100vw 12rem ;
+    background-repeat: no-repeat;
+    background-color: #0C0C0D;
 }
-
 .box {
     display: flex;
     flex-direction: column;
@@ -35,6 +36,12 @@ form {
     width: 45rem;
     align-items: flex-end;
     gap: 0.75rem;
+}
+
+.line {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem; 
 }
 
 #item1{
@@ -180,3 +187,49 @@ input::-webkit-inner-spin-button {
     appearance: none;
 }
 
+@media (max-width: 428px) {
+    body{
+        background: linear-gradient(180deg, rgba(9, 9, 9, 0.30) 0%, #090909 100%), url(./assets/image-top-fruits.png), #0C0C0D 338.988% 100.201% no-repeat;
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: auto 11.375rem;
+    }
+
+    .box{
+        align-items: center;  
+    }
+
+    h1{
+        margin-top: 5.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 100%; /* 1.5rem */
+        letter-spacing: 0.045rem;
+        width: calc(100vw - 1.5rem);
+        margin-inline: 1.5rem;
+    }
+
+    form {
+        display: flex;
+        width: calc(100vw - 1.5rem);
+        margin-inline: 1.5rem;
+        align-items: flex-end;
+        align-content: flex-end;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    .line{
+        flex-wrap: wrap;
+        width:100%;
+        justify-content: space-between;
+    }
+
+    #item1 input {
+        width: calc(100vw - 1.5rem);
+    }
+
+    .card{
+        margin-inline: 1.5rem !important;
+    }
+}
+  
