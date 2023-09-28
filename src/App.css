@@ -187,7 +187,7 @@ input::-webkit-inner-spin-button {
     appearance: none;
 }
 
-@media (max-width: 428px) {
+@media (max-width: 400px) {
     body{
         background: linear-gradient(180deg, rgba(9, 9, 9, 0.30) 0%, #090909 100%), url(./assets/image-top-fruits.png), #0C0C0D 338.988% 100.201% no-repeat;
         background-repeat: no-repeat;
@@ -219,7 +219,6 @@ input::-webkit-inner-spin-button {
         flex-wrap: wrap;
     }
     .line{
-        flex-wrap: wrap;
         width:100%;
         justify-content: space-between;
     }
